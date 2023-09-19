@@ -1,19 +1,22 @@
 <template>
-  <div id="app">
-    <h1>TODOリスト</h1>
-    <div>
-      <input v-model="newTodoName"/>
-      <button @click="addTodo()">追加</button>
-      <ul>
-        <!-- keyはdoc.id todoはdocの中身(name&fag)-->
-        <li v-for="(todo, key) in todos" :key="key">
-          <input type="checkbox" v-model="todo.isComplete" @click="updateTodo(todo, key)"/>
-            {{ todo.name }}
-          <button @click="removeTodo(key)">X</button>
-        </li>
-      </ul>
+    <div id="app">
+        <h1>TODOリスト</h1>
+        <div>
+            <input v-model="newTodoName" />
+            <button @click="addTodo()">追加</button>
+            <ul class="forWrapper">
+                <!-- keyはdoc.id todoはdocの中身(name&fag)-->
+                <li v-for="(todo, key) in todos"
+                    :key="key">
+                    <input type="checkbox"
+                           v-model="todo.isComplete"
+                           @click="updateTodo(todo, key)" />
+                    {{ todo.name }}
+                    <button @click="removeTodo(key)">X</button>
+                </li>
+            </ul>
+        </div>
     </div>
-  </div>
 </template>
 
 <script>
@@ -66,11 +69,18 @@ export default {
 
 <style>
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+    font-family: 'Avenir', Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-align: center;
+    color: #2c3e50;
+    margin-top: 60px;
 }
-</style>
+
+ul {
+    padding-left: 0;
+}
+
+li {
+    list-style: none;
+}</style>
